@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import Footer from './containrs/Footer'
+import Header from './containrs/Header'
+import Main from './containrs/Main'
+import SocialMedia from './components/pages/SocialMedia'
+import Copyright from './components/pages/Copyright'
+import CalculadorApp from './components/calculador/CalculadorApp'
+import bascula from './images/bascula-dibujo.png'
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+     <Header title = "Cálculo de Indice de Masa Corporal IMC"/>
+      <Main>
+        <CalculadorApp bascula = {bascula}/>
+      </Main>
+      <Footer>
+          <SocialMedia/>
+          <Copyright/>
+      </Footer>
+    </>
+  )
 }
 
-export default App;
+export default App
