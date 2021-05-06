@@ -1,10 +1,11 @@
 import React from 'react'
+import { Card } from 'react-bootstrap'
 
 const CabeceraCalculo = () => {
     return (
-        <article>
-            <p>Calculadora</p>
-        </article>
+        <>
+            <Card.Header>Calculadora</Card.Header>
+        </>
     )
 }
 

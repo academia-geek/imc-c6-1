@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card } from 'react-bootstrap'
 import Cabecera from './CabeceraCalculo'
 import Cuerpo from './CuerpoCalculo'
 class CalculadorApp extends React.Component {
@@ -19,8 +20,10 @@ class CalculadorApp extends React.Component {
       
     return (
       <>
+      <Card>
         <Cabecera/>
         <Cuerpo bascula = {this.props.bascula}/>
+        </Card>
       </>
     )
   }

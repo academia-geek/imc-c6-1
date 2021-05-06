@@ -1,9 +1,10 @@
 import React from 'react'
+import { Image } from 'react-bootstrap'
 
 const BasculaIMC = ({bascula}) => {
     return (
         <article>
-            <img src={bascula}  alt = "logo" style = {{width : "20%"}}/>
+            <Image src={bascula}  alt = "logo" fluid style = {{width : "60%"}}/>
         </article>
     )
 }
