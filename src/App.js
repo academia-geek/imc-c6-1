@@ -6,7 +6,7 @@ import Copyright from './components/pages/Copyright'
 import CalculadorApp from './components/calculador/CalculadorApp'
 import bascula from './images/bascula-dibujo.png'
 import { Container } from 'react-bootstrap'
-import './sass/style.scss';
+import './sass/style.scss'
 
 function App () {
   return (
