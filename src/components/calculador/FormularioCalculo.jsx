@@ -2,30 +2,60 @@ import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 export default class FormularioCalculo extends Component {
-  constructor () {
+  constructor ({modificarDatosIMC, verDatoIMC}) {
     super()
-    this.state = {
+    /*this.state = {
       estatura: 1.6,
       peso: 50
-    }
+    }*/
+    this.modificarDatosIMC = modificarDatosIMC
+    this.verDatoIMC = verDatoIMC
     this.eventoClik = this.eventoClik.bind(this)
   }
 
   eventoClik(e) {
     e.preventDefault()
-    this.setState({estatura : 1.8})
+    this.props.modificarDatosIMC("peso", document.querySelector("#peso").value)
+    this.props.modificarDatosIMC("estatura", document.querySelector("#estatura").value)
+    //document.querySelector("#valor_calculo_imc").innerHTML = this.state.peso / this.state.estatura
+    ///this.setProps({nombre : "oscar"})
+    //this.setState({estatura : 1.8})
   }
 
   UNSAFE_componentWillMount () {
     console.log('No se a montado el componente')
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    console.log("Se esta modificando el estado, shouldComponentUpdate") 
+    //console.log(this.props, this.state)
+    //console.log(nextProps, nextState)
+
+    //return nextState.peso >= 500 ? false : true
+    return true
+  }
+
+  UNSAFE_componentWillUpdate(nextProps, nextState){
+    console.log("Se esta modificando el estado, UNSAFE_componentWillUpdate") 
+    //console.log(this.props, this.state)
+    //console.log(nextProps, nextState)
+  }
+
+  componentDidUpdate(x,y){
+    console.log("Ya se modificando el estado, componentDidUpdate") 
+    //console.log(this.props, this.state)
+    //console.log(x, y  )
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log("Se inicio el proceso de modificacion del estado, componentWillReceiveProps") 
+  }
+
   render () {
-    console.log('Esta renderizando el componente')
+    console.log('Esta renderizando el componente, render')
     return (
       <article>
         <Form>
-          <p>IMC = {this.state.peso / this.state.estatura}</p>
           <Form.Group controlId='peso'>
             <Form.Label>
               Peso <small>(kilos)</small>
@@ -34,9 +64,10 @@ export default class FormularioCalculo extends Component {
               type='number'
               placeholder='Peso'
               onKeyUp = {(e) => {
-                this.setState({peso : e.target.value})
+                this.props.modificarDatosIMC("peso",e.target.value)
+                //this.setState({peso : parseFloat(e.target.value)})
               }}
-              defaultValue={this.state.peso}
+              defaultValue={this.props.verDatoIMC("peso")}
             />
           </Form.Group>
           <Form.Group controlId='estatura' className='mb-2'>
@@ -46,7 +77,8 @@ export default class FormularioCalculo extends Component {
             <Form.Control
               type='number'
               placeholder='Estatura'
-              defaultValue={this.state.estatura}
+              onKeyUp = {(e) => this.props.modificarDatosIMC("estatura",e.target.value)}
+              defaultValue={this.props.verDatoIMC("estatura")}
             />
           </Form.Group>
           <Button
@@ -54,7 +86,7 @@ export default class FormularioCalculo extends Component {
             type='submit'
             onClick={this.eventoClik}
           >
-            Enviar
+            Calcular
           </Button>
         </Form>
       </article>
@@ -62,6 +94,8 @@ export default class FormularioCalculo extends Component {
   }
 
   componentDidMount () {
+   // this.setState({peso : 90})
+    //document.querySelector("#peso").value = 90
     console.log('Ya se monto el componente en el DOM')
   }
 }

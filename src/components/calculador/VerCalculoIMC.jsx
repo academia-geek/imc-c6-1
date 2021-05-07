@@ -6,7 +6,7 @@ const VerCalculoIMC = ({ estatura, peso }) => {
       <h1>IMC</h1>
       <h3>
       <span>
-        <b>{peso / estatura}</b>
+        <b id="valor_calculo_imc">{isNaN(parseFloat(peso / estatura)) ? 0 : parseFloat(peso / estatura).toFixed(2)}</b>
       </span>
       </h3>
     </article>
