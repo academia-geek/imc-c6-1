@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap'
-
+import Loading from './../pages/Loading'
 export default class FormularioCalculo extends Component {
   constructor ({modificarDatosIMC, verDatoIMC}) {
     super()
-    /*this.state = {
-      estatura: 1.6,
-      peso: 50
-    }*/
+    this.state = {
+      loading : false
+    }
     this.modificarDatosIMC = modificarDatosIMC
     this.verDatoIMC = verDatoIMC
     this.eventoClik = this.eventoClik.bind(this)
@@ -89,6 +88,7 @@ export default class FormularioCalculo extends Component {
             Calcular
           </Button>
         </Form>
+        <Loading visible = {this.state.loading}/>
       </article>
     )
   }
