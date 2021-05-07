@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import Loading from '../pages/Loading'
 
 export default class FormularioCalculo extends Component {
   constructor () {
     super()
     this.state = {
       estatura: 1.6,
-      peso: 50
+      peso: 50,
+      loading: false
     }
     this.eventoClik = this.eventoClik.bind(this)
   }
@@ -22,6 +24,7 @@ export default class FormularioCalculo extends Component {
 
   render () {
     console.log('Esta renderizando el componente')
+    const { loading } = this.state;
     return (
       <article>
         <Form>
@@ -56,6 +59,7 @@ export default class FormularioCalculo extends Component {
           >
             Enviar
           </Button>
+          <Loading visble = {this.state.loading}/>
         </Form>
       </article>
     )
